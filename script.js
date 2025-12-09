@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (CONFIG.isFlooded) {
         statusText.textContent = "YES";
         statusText.classList.add('yes');
-        statusImage.src = "Fernhillisflooded.jpg"; // Your uploaded file name
+        statusImage.src = "Fernhillisflooded.png"; // Your uploaded file name
         statusImage.alt = "Fern Hill Road is currently flooded";
     } else {
         statusText.textContent = "NO";
