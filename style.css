@@ -1,0 +1,106 @@
+:root {
+    --bg-color: #fbf8f1;
+    /* Cream/Bone white from your screenshot */
+    --text-color: #2c2c2c;
+    --brand-red: #8b2222;
+    /* Approximate dark red from your logo */
+    --accent-blue: #6c71c4;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Merriweather', Georgia, serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+header {
+    padding: 20px;
+    border-bottom: 2px solid var(--brand-red);
+}
+
+.brand-link {
+    text-decoration: none;
+    color: var(--brand-red);
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+#status-text {
+    font-size: 4rem;
+    margin: 10px 0;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+
+.yes {
+    color: var(--brand-red);
+}
+
+.no {
+    color: #2e7d32;
+}
+
+.main-image-wrapper img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border: 5px solid white;
+}
+
+.timestamp {
+    color: #666;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: #dcdcdc;
+    margin: 40px 0;
+}
+
+/* Cams Grid */
+.cam-grid {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.cam-box img {
+    width: 100%;
+    max-width: 200px;
+    height: auto;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    #status-text {
+        font-size: 3rem;
+    }
+
+    .cam-box img {
+        max-width: 100%;
+    }
+}
