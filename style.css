@@ -1,10 +1,10 @@
 :root {
     --bg-color: #fbf8f1;
-    /* Cream/Bone white from your screenshot */
     --text-color: #2c2c2c;
     --brand-red: #8b2222;
-    /* Approximate dark red from your logo */
-    --accent-blue: #6c71c4;
+    --alert-bg: #fff3cd;
+    --alert-text: #856404;
+    --alert-border: #ffeeba;
 }
 
 body {
@@ -65,10 +65,26 @@ h1 {
     border: 5px solid white;
 }
 
-.timestamp {
-    color: #666;
-    font-style: italic;
+.meta-info {
+    margin-top: 15px;
     font-size: 0.9rem;
+    color: #555;
+}
+
+.source-note a {
+    color: var(--brand-red);
+}
+
+/* SAFETY WARNING BOX */
+.safety-alert {
+    background-color: var(--alert-bg);
+    color: var(--alert-text);
+    border: 1px solid var(--alert-border);
+    padding: 15px;
+    border-radius: 6px;
+    margin: 20px auto;
+    max-width: 600px;
+    font-size: 0.95rem;
 }
 
 .divider {
@@ -84,6 +100,7 @@ h1 {
     justify-content: center;
     gap: 15px;
     flex-wrap: wrap;
+    margin-bottom: 25px;
 }
 
 .cam-box img {
@@ -94,7 +111,55 @@ h1 {
     border: 1px solid #ccc;
 }
 
-/* Responsive adjustments */
+/* Resource Buttons */
+.resource-links {
+    margin-top: 20px;
+}
+
+.button-link {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: white;
+    border: 1px solid #ccc;
+    color: var(--text-color);
+    text-decoration: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.button-link:hover {
+    border-color: var(--brand-red);
+    color: var(--brand-red);
+}
+
+/* Footer & Disclaimer */
+footer {
+    padding: 40px 20px;
+    background-color: #f4f1ea;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 40px;
+}
+
+.disclaimer {
+    max-width: 700px;
+    margin: 0 auto 20px auto;
+    font-size: 0.75rem;
+    color: #777;
+    text-align: justify;
+    line-height: 1.4;
+}
+
+.disclaimer p {
+    margin: 0;
+}
+
+footer a {
+    color: var(--brand-red);
+}
+
 @media (max-width: 600px) {
     #status-text {
         font-size: 3rem;
@@ -102,5 +167,9 @@ h1 {
 
     .cam-box img {
         max-width: 100%;
+    }
+
+    .disclaimer {
+        text-align: left;
     }
 }
