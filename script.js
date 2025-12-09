@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (CONFIG.cam3) document.getElementById('cam3').src = buildUrl(CONFIG.cam3);
     }
 
-    // --- NEW FLOOD SIMULATOR LOGIC (The Ditch Trap) ---
+    // --- FLOOD SIMULATOR LOGIC ---
     const canvas = document.getElementById('gameCanvas');
     const ctx = canvas.getContext('2d');
     let gameRunning = false;
@@ -48,12 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     let obstacles = [];
 
     // GAME SETTINGS
-    const roadWidth = 300; // Total canvas width
-    const ditchSize = 60;  // How wide the invisible ditch is on each side
+    const roadWidth = 300;
+    const ditchSize = 60;
     const safeZoneStart = ditchSize;
     const safeZoneEnd = roadWidth - ditchSize;
 
-    // The Player (Car) - Starts safely in the middle
+    // The Player (Car)
     const car = { x: 130, y: 350, width: 40, height: 60 };
 
     // Controls
@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Keyboard
     document.addEventListener('keydown', (e) => {
         if (!gameRunning) return;
-        // Allow moving anywhere, even into the ditch (that's the trap)
         if (e.key === 'ArrowLeft' && car.x > 0) car.x -= 20;
         if (e.key === 'ArrowRight' && car.x < canvas.width - car.width) car.x += 20;
     });
@@ -119,9 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (reason === 'ditch') {
             deathMsg.innerText = "You couldn't see the edge of the road. You slid into the ditch and your car submerged.";
             deathMsg.style.color = "cyan";
-            linkContainer.classList.remove('hidden'); // Show link for ditch failures
+            linkContainer.classList.remove('hidden'); // Show link
         } else {
-            // Hit a log
             deathMsg.innerText = "You hit a submerged log and stalled your engine.";
             deathMsg.style.color = "orange";
             linkContainer.classList.add('hidden');
@@ -133,12 +131,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-        // 1. Draw The "Water" (The whole screen)
-        ctx.fillStyle = "#2b3e50"; // Murky flood water color
+        // 1. Draw Water
+        ctx.fillStyle = "#2b3e50";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // 2. Draw "Invisible" Ditch Markers (Subtle hints)
-        // We make them VERY subtle so it's hard to tell where the road ends
+        // 2. Draw Ditch Markers
         ctx.strokeStyle = "#3a4f63";
         ctx.setLineDash([10, 20]);
         ctx.beginPath();
@@ -149,29 +146,25 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
 
         // 3. Draw Car
-        ctx.fillStyle = "#d32f2f"; // Red car for contrast
+        ctx.fillStyle = "#d32f2f";
         ctx.fillRect(car.x, car.y, car.width, car.height);
 
         // --- DITCH CHECK ---
-        // If car goes too far left or right, they sink.
         if (car.x < safeZoneStart - 10 || car.x + car.width > safeZoneEnd + 10) {
             triggerGameOver('ditch');
             return;
         }
 
         // 4. Spawn Obstacles
-        // Normal Logs
-        if (frameCount % 50 === 0 && frameCount < 250) {
-            // Spawn logs ONLY within the safe zone initially
+        // Changed from 50 to 70 to make them appear less frequently (easier)
+        if (frameCount % 70 === 0 && frameCount < 350) {
             let obsWidth = 50;
-            // Random position strictly inside the safe zone
             let obsX = Math.random() * (safeZoneEnd - safeZoneStart - obsWidth) + safeZoneStart;
             obstacles.push({ x: obsX, y: -50, width: obsWidth, height: 20, type: 'log' });
         }
 
-        // THE TRAP: Two logs blocking the center
-        if (frameCount === 300) {
-            // Block the ENTIRE safe zone
+        // THE TRAP: Now happens a bit later (Frame 400 instead of 300)
+        if (frameCount === 400) {
             obstacles.push({
                 x: safeZoneStart,
                 y: -100,
@@ -184,9 +177,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // 5. Update Obstacles
         for (let i = 0; i < obstacles.length; i++) {
             let obs = obstacles[i];
-            obs.y += 6; // Fast water
 
-            ctx.fillStyle = "#5c4033"; // Log color
+            // SLOW DOWN: Changed speed from 6 to 3
+            obs.y += 3;
+
+            ctx.fillStyle = "#5c4033";
             ctx.fillRect(obs.x, obs.y, obs.width, obs.height);
 
             // Collision with Log
