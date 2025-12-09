@@ -77,6 +77,37 @@
 
         <hr class="divider">
 
+        <div class="game-launcher" style="text-align: center;">
+            <h3>Flood Simulator 2025</h3>
+            <p>Think you can make it across? (Spoiler: You can't)</p>
+            <button id="start-game-btn">PLAY SIMULATOR</button>
+
+            <div id="game-container" class="hidden">
+                <button id="close-game-btn">X</button>
+                <canvas id="gameCanvas" width="300" height="500"></canvas>
+                <p class="game-instructions">Use Arrow Keys to dodge logs. Stay on the pavement.</p>
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="game-over-modal" class="hidden">
+            <div class="modal-content">
+                <h2 style="color: red; margin-top: 0;">YOU DIED</h2>
+                <p id="death-message"></p>
+
+                <div id="rescue-link-container" class="hidden">
+                    <p>Don't be a statistic.</p>
+                    <a href="https://www.weather.gov/safety/flood-turn-around-don-t-drown" target="_blank"
+                        class="pixel-link">READ SAFETY TIPS</a>
+                </div>
+
+                <button id="restart-btn">TRY AGAIN</button>
+                <button id="quit-btn">GIVE UP</button>
+            </div>
+        </div>
+
+        <hr class="divider">
+
         <div class="subscribe-section">
             <h3>Stay Updated</h3>
             <div style="height: 40vmin; min-height: 360px; width: 100%; max-width: 600px; margin: 0 auto;">
