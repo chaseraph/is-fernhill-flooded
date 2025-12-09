@@ -1,6 +1,6 @@
 const CONFIG = {
     // CHANGE THIS TO true FOR YES, false FOR NO
-    isFlooded: true, 
+    isFlooded: false, 
     
     // Your Traffic Cam URLs go here
     cam1: "https://tripcheck.com/RoadCams/cams/Fern%20Hill%20Rd%20at%20Taylor%20Way_pid3782.JPG",
@@ -8,3 +8,4 @@ const CONFIG = {
     cam3: "https://tripcheck.com/RoadCams/cams/Fern%20Hill%20Rd%20at%20Geiger%20Rd_pid4521.jpg"
 
 };
+
