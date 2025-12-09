@@ -29,7 +29,19 @@
                 <img id="status-image" src="fernhillisnotflooded.jpg" alt="Current road condition">
             </div>
 
-            <p class="timestamp">Last check: <span id="current-date"></span></p>
+            <div class="meta-info">
+                <p class="timestamp">Last check: <span id="current-date"></span></p>
+                <p class="source-note">
+                    <strong>Note:</strong> This site is updated manually by a human based on alerts from <a
+                        href="https://www.washingtoncountyor.gov/lut/road-maintenance/flooding-winds"
+                        target="_blank">Washington County Land Use and Transportation</a>.
+                </p>
+            </div>
+
+            <div class="safety-alert">
+                <p><strong>⚠️ SAFETY WARNING:</strong> Never drive into a flooded roadway. If you see water on the road,
+                    turn around.</p>
+            </div>
         </div>
 
         <hr class="divider">
@@ -37,10 +49,17 @@
         <div class="cams-section">
             <h3>Live Traffic Cams</h3>
             <p class="small-text">Updates automatically every 5 minutes</p>
+
             <div class="cam-grid">
                 <div class="cam-box"><img id="cam1" src="" alt="Traffic Cam 1"></div>
                 <div class="cam-box"><img id="cam2" src="" alt="Traffic Cam 2"></div>
                 <div class="cam-box"><img id="cam3" src="" alt="Traffic Cam 3"></div>
+            </div>
+
+            <div class="resource-links">
+                <a href="https://tripcheck.com" target="_blank" class="button-link">Check TripCheck.com</a>
+                <a href="https://www.washingtoncountyor.gov/lut/road-maintenance/flooding-winds" target="_blank"
+                    class="button-link">County Flood Alerts</a>
             </div>
         </div>
 
@@ -52,7 +71,7 @@
                 <script src="https://cdn.jsdelivr.net/ghost/signup-form@~0.3/umd/signup-form.min.js"
                     data-label-1="fernhill" data-background-color="#fbf8f1" data-text-color="#333333"
                     data-button-color="#8b2222" data-button-text-color="#FFFFFF" data-title="News in the Grove"
-                    data-description="Local news, events, and flood alerts for Forest Grove."
+                    data-description="News, events and history in Forest Grove. "
                     data-icon="https://www.newsinthegrove.com/content/images/size/w192h192/size/w256h256/2025/01/NITG.png"
                     data-site="https://www.newsinthegrove.com/" data-locale="en" async>
                     </script>
@@ -61,11 +80,6 @@
     </main>
 
     <footer>
-        <p>&copy; News in the Grove. <a href="https://www.newsinthegrove.com">Back to Main Site</a></p>
-    </footer>
-
-    <script src="config.js"></script>
-    <script src="script.js"></script>
-</body>
-
-</html>
+        <div class="disclaimer">
+            <p><strong>Disclaimer:</strong> This website is for informational purposes only and is not an official
+                government resource. Road conditions can change rapidly. The operators of this
